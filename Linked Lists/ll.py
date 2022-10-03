@@ -45,6 +45,21 @@ def insert(head, pos, data):
     return head
 
 
+def remove(head, pos):
+    if pos < 0 or pos > size(head):
+        return head
+
+    if pos == 0:
+        return head.next
+
+    temp = head
+    for i in range(pos - 1):
+        temp = temp.next
+
+    temp.next = temp.next.next
+    return head
+
+
 def printLL(head):
     temp = head
     while temp != None:
@@ -56,8 +71,11 @@ def printLL(head):
 def main():
     head = generateLL(10)
 
-    print(head.data)
-    print(head.next.data)
+    printLL(head)
+
+    head = remove(head, 2)
+
+    printLL(head)
 
 
 main()
